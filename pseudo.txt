@@ -1,0 +1,26 @@
+description
+
+This website will have a display of different animes which the user can click on the the images of the animes the user likes and add them to a favourite/watchlist of theirs
+
+
+
+MVP
+Axious API with https://jikan.docs.apiary.io/#reference/0/top/top-request-example+schema
+
+Draw Animes covers from endpoint top 50 anime
+
+have them Displayed on the page in a list via  JSX REACT
+
+Once Anime Image cover is Clicked they are added to New list which is called Persoanl Favourites 
+This part will be done with a component most likely 
+
+Adding a remove button to remove them from this list
+This part will be done with a component most likely 
+
+
+
+Stretch Goals
+More endPoints with same API Database for example top Manga, currently airing shows for the user to chose from
+
+Searchable Nav bar that can find shows
+This part will be done with a component most likely 

@@ -1,10 +1,17 @@
 function AnimeCovers(props) {
+
+
+
   return (
     <div className="covers">
-      <h2>{props.title}</h2>
-      <img src={props.imagePath} alt={props.alt} />
-      <p>{props.rank}</p>
-      <button>Add to Watchlist</button>
+      <a href={props.url} target="_blank">
+        <img src={props.imagePath} alt={props.alt} />
+        <div className="coverContent">
+          <h2>{props.title}</h2>
+          <button>Details</button>
+          <p>Rank {props.rank}</p>
+        </div>      
+    </a>
     </div>
   )
 }

@@ -60,10 +60,10 @@ function App () {
                 <a href="header">Home</a>
               </li>
               <li>
-                <a href="#">About</a>
+                <a href="watchlist">About</a>
               </li>
               <li>
-                <a href="#">Contact Us</a>
+                <a href="watchlist">Contact Us</a>
               </li>
             </ul>
           </div>

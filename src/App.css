@@ -14,6 +14,7 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  height: 65px;
 }
 .logo {  
   font-size:32px;
@@ -49,6 +50,7 @@ nav {
 
 .searchBar {
   position: relative;
+  padding-top: 15px;
 }
 .searchBarIcon {
   position: absolute;
@@ -96,10 +98,11 @@ nav {
 @media (max-width:614px) {
   .menu ul{
   flex-direction: column;
+  padding-top: 10px;
   }
 }
 
-@media (max-width:614px) {
+@media (max-width:490px) {
   .menu ul{
   display: none;
   }
@@ -112,7 +115,7 @@ h1 {
 
 header { 
   background-image: url(./headerphoto.jpeg);
-  height: 50vh;
+  height: 70vh;
   background-size: cover;
   background-position: 50%;
   
@@ -251,7 +254,15 @@ header {
 }
 
 .covers:hover {
-  box-shadow:0 0 12px rgba(0,0,0,.5)
+  box-shadow:0 0px 12px rgba(0,0,0,.5)
+}
+
+.covers:hover, .coverContent:hover{
+  
+  backdrop-filter:blur(3px);
+  opacity:1;
+  background-color:rgba(0,0,0,.5);
+  transform:scale(1.0)
 }
 .coverContent {
   padding:8px;
@@ -266,6 +277,17 @@ header {
   top:0;
   left:0
 }
+.coverContent, .covers img {
+  border-radius:8px;
+  transform:scale(.9);
+  transition:.3s ease-in-out;
+
+}
+
+.covers img {
+  width:200px;
+  height:300px;
+}
 .coverContent h2, .coverContent p {
   text-align:center;
   font-weight:700;
@@ -273,26 +295,12 @@ header {
 
 }
 
-.coverContent:hover {
-  opacity:1;
-  background-color:rgba(0,0,0,.5);
-  transform:scale(1)
+.covers:hover img {
 
+  transform:scale(1.0)
 }
 
-.covers img {
-  width:200px;
-  height:300px;
-  object-fit:cover
 
-}
-
-.coverContent, .covers img {
-  border-radius:8px;
-  transform:scale(.9);
-  transition:.3s ease-in-out
-
-}
 .covers button {
 display:flex;
 justify-content:center;
@@ -316,3 +324,5 @@ text-decoration:none
 .covers button:hover {
   transform:translateY(-10px)
 }
+
+

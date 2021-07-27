@@ -70,7 +70,7 @@ function App () {
         </div>
         <div className="searchBar">
           <input className="searchBarInput" type="text" placeholder="Search for Animes..." />
-          <span className="searchBarIcon"><i class="fas fa-search"></i></span>
+          <span className="searchBarIcon"><i className="fas fa-search"></i></span>
         </div>
       </nav>
       <header>
@@ -93,7 +93,7 @@ function App () {
                         {<button
                           onClick={ () => {handleDelete(anime) } }
                         >
-                          X
+                          <i className="fas fa-trash-alt"></i>
                         </button>}
                       </li>
                     )

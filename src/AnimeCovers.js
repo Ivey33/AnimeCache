@@ -5,7 +5,7 @@ function AnimeCovers(props) {
   return (
     <div className="covers">
       <a href={props.url} target="_blank">
-        <img src={props.imagePath} alt={props.alt} />
+        <img className="coverImage" src={props.imagePath} alt={props.alt} />
         <div className="coverContent">
           <h2>{props.title}</h2>
           <button>Details</button>

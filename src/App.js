@@ -17,7 +17,21 @@ function App () {
   const exportAnime = (animeObject) => {
     // const newWatchlistInput = [...watchlistInput];
     // newWatchlistInput.push(animeTitle);
-    setWatchlistInput([...watchlistInput, animeObject])
+
+    let existsInArray = false;
+
+    for (let itemInWatchlistInput of watchlistInput) {
+      if (animeObject.mal_id === itemInWatchlistInput.mal_id) {
+        existsInArray = true;
+        break;
+      }
+    }
+    if (!existsInArray) {
+
+      setWatchlistInput([...watchlistInput, animeObject])
+    }
+
+
     // console.log(newWatchlistInput);
   }
 
@@ -69,7 +83,7 @@ function App () {
           </div>
         </div>
         <div className="searchBar">
-          <input className="searchBarInput" type="text" placeholder="Search for Animes..." />
+          <input className="searchBarInput" type="text" placeholder="Search for Animes... JUST FOR SHOW DOESNT WORK" />
           <span className="searchBarIcon"><i className="fas fa-search"></i></span>
         </div>
       </nav>
@@ -137,6 +151,9 @@ function App () {
           <Seperator />          
         </div>
       </main>
+      <footer>
+        <p>Created by Austin Ivey @ <span>Juno College</span></p>
+      </footer>
     </div>
   );
 }

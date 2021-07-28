@@ -119,6 +119,8 @@ function App () {
                   title={anime.title}
                   imagePath={anime.image_url}
                   rank={anime.rank}
+                  url={anime.url}
+                  // anime={anime}
                 />
                 <button className="addToWatchlist" onClick={() => {exportAnime(anime)}}>Add to Watchlist</button>
               </div>

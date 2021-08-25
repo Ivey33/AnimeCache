@@ -11,12 +11,12 @@ function App () {
 
   const [anime, setAnime] = useState([]);
   const [watchlistInput, setWatchlistInput] = useState([]);
-
-  
+  const [topAnimeList, setTopAnimeList] = useState([]);
+  const [topFive, setTopFive] = useState(5);
+  const [lowerBound, setLowerBound] = useState(0);
 
   const exportAnime = (animeObject) => {
-    // const newWatchlistInput = [...watchlistInput];
-    // newWatchlistInput.push(animeTitle);
+
 
     let existsInArray = false;
 
@@ -52,14 +52,62 @@ function App () {
     }).then((response) => {
       console.log(response.data.top);
       setAnime(response.data.top);
+
+      let topItems = [...response.data.top];
+
+      topItems = topItems.slice(0, topFive)
+
+      setTopAnimeList(topItems)
     });
-  // Add an empty array here to prevent the callback function from running every time our component re-renders!
+  
   }, []);
 
-  // Event listener for buttons
-  // const handleChange = (animeId) => {
-  //   console.log(animeId);
-  // }
+
+// Buttons to move array to next 5 in the line
+
+  const previousPage = (e) => {
+    console.log("parentComponent");   
+    
+    const updatedArray = getNewArray(false, true, topFive);
+    setTopAnimeList(updatedArray)
+  }
+
+  const nextPage = (e) => {
+    console.log("parentComponent");
+    const updatedArray = getNewArray(true, false, topFive);
+    setTopAnimeList(updatedArray)
+  }
+
+  const getNewArray = (isNext, isPrevious, count) => {
+    console.log(isNext);
+    console.log(isPrevious);
+    console.log(count);
+
+    let newLowerBound = 0;
+
+    if (isNext) {
+      console.log("isNext");
+      newLowerBound = lowerBound + count;
+      setLowerBound(newLowerBound);
+    } 
+
+    if (isPrevious) {
+      console.log("isPrevious");
+      newLowerBound = lowerBound - count;
+      setLowerBound(newLowerBound);
+    } 
+    
+    let upperBound = newLowerBound + count;
+
+    console.log(newLowerBound);
+    const newArray = [...anime]
+    const returnArray = newArray.slice(newLowerBound, upperBound)
+    console.log(returnArray);
+    return returnArray;
+  }
+
+
+
 
   return (
     <div className="App">
@@ -68,7 +116,7 @@ function App () {
           <div className="logo">
             <h2>Anime<span>Cache</span></h2>
           </div>
-          <div className="menu">
+          {/* <div className="menu">
             <ul>
               <li>
                 <a href="header">Home</a>
@@ -80,12 +128,12 @@ function App () {
                 <a href="watchlist">Contact Us</a>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
-        <div className="searchBar">
+        {/* <div className="searchBar">
           <input className="searchBarInput" type="text" placeholder="Search for Animes... JUST FOR SHOW DOESNT WORK" />
           <span className="searchBarIcon"><i className="fas fa-search"></i></span>
-        </div>
+        </div> */}
       </nav>
       <header>
         <section className="watchlist">
@@ -120,11 +168,14 @@ function App () {
       </header>
       <main>
         <div className="divider">
-          <h2>Top 50 Anime</h2>
-          <Seperator />          
+          <h2>Top {topFive + lowerBound} Anime</h2>
+          <Seperator 
+            onNextPage={nextPage}
+            onPreviousPage={previousPage}
+          />          
         </div>
         <div className="top50">
-          {anime.map((anime) => {
+          {topAnimeList.map((anime) => {
             return (
               <div className="slider" key={anime.mal_id}>
                 <AnimeCovers
@@ -142,14 +193,7 @@ function App () {
             );
           })}
         </div>
-        <div className="divider">
-          <h2>Ongoing Anime</h2>
-          <Seperator />          
-        </div>
-        <div className="divider">
-          <h2>Top Manga</h2>
-          <Seperator />          
-        </div>
+        
       </main>
       <footer>
         <p>Created by Austin Ivey @ <span>Juno College</span></p>

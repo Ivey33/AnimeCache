@@ -12,7 +12,7 @@ function App () {
   const [anime, setAnime] = useState([]);
   const [watchlistInput, setWatchlistInput] = useState([]);
   const [topAnimeList, setTopAnimeList] = useState([]);
-  const [topFive, setTopFive] = useState(5);
+  const topFive = 5;
   const [lowerBound, setLowerBound] = useState(0);
 
   const exportAnime = (animeObject) => {

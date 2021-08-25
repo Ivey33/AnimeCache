@@ -5,11 +5,6 @@ function Seperator(props) {
     props.onPreviousPage();
   }
 
-  const nextPage = (e) => {
-    console.log("next");
-    
-  }
-
 
   return (
         <div className="seperator">
